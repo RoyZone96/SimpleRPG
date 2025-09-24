@@ -1,0 +1,14 @@
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\SimpleRPG.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\SimpleRPG.AssemblyInfoInputs.cache
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\SimpleRPG.AssemblyInfo.cs
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\SimpleRPG.csproj.CoreCompileInputs.cache
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\bin\Debug\net8.0\SimpleRPG.exe
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\bin\Debug\net8.0\SimpleRPG.deps.json
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\bin\Debug\net8.0\SimpleRPG.runtimeconfig.json
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\bin\Debug\net8.0\SimpleRPG.dll
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\bin\Debug\net8.0\SimpleRPG.pdb
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\SimpleRPG.dll
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\refint\SimpleRPG.dll
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\SimpleRPG.pdb
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\SimpleRPG.genruntimeconfig.cache
+D:\Projects\Personal Projects\SimpleRPG\SimpleRPG\obj\Debug\net8.0\ref\SimpleRPG.dll
