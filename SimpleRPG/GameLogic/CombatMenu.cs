@@ -1,5 +1,6 @@
 using System;
 using ClassList;
+using GameLogic;
 using MonsterList;
 public class CombatMenu
 {
@@ -29,7 +30,7 @@ public class CombatMenu
             Console.WriteLine("2. Double Shot");
             Console.WriteLine("3. Evasion");
         }
-
+        Console.WriteLine("4. Inventory");
         Console.Write("9. Run Away\n");
         string choice = Console.ReadLine();
         switch (choice)
@@ -73,6 +74,9 @@ public class CombatMenu
                     rangerEvasion.Evasion();
                 }
                 break;
+            case "4":
+                ItemMenu.ShowItemMenu(character);
+                break;
             case "9":
                 Console.WriteLine($"{character.Name} ran away from the battle!");
                 character.Health = 0; // End combat
@@ -81,5 +85,6 @@ public class CombatMenu
                 Console.WriteLine("Invalid choice, turn skipped.");
                 break;
         }
+
     }
 }

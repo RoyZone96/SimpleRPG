@@ -7,6 +7,7 @@ namespace MonsterList
     {
         public string Name { get; set; }
         public int Health { get; set; }
+        public int Mana { get; set; }
         public int Strength { get; set; }
         public int Defense { get; set; }
         public int Speed { get; set; }
@@ -43,6 +44,13 @@ namespace MonsterList
 
         public void SneakAttack(ICharacter target)
         {
+            if (Mana < 10)
+            {
+                Console.WriteLine($"{Name} does not have enough Mana to use Sneak Attack!");
+                Attack(target);
+                return;
+            }
+            Mana -= 10;
             Random rand = new Random();
             if (rand.Next(0, 100) < target.Luck)
             {

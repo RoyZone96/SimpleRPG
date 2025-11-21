@@ -7,6 +7,7 @@ namespace MonsterList
     {
         string Name { get; set; }
         int Health { get; set; }
+        int Mana { get; set; }
         int Strength { get; set; }
         int Defense { get; set; }
         int Speed { get; set; }

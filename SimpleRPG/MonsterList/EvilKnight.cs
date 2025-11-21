@@ -8,6 +8,7 @@ public class EvilKnight : IMonster
 {
     public string Name { get; set; }
     public int Health { get; set; }
+    public int Mana { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -17,6 +18,7 @@ public class EvilKnight : IMonster
     {
         Name = "Evil Knight";
         Health = 100;
+        Mana = 75;
         Strength = 20;
         Defense = 15;
         Speed = 10;
@@ -44,6 +46,12 @@ public class EvilKnight : IMonster
 
     public void DarkSlash(ICharacter target)
     {
+        if (Mana < 20)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Dark Slash!");
+            return;
+        }
+        Mana -= 20;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {
@@ -60,6 +68,12 @@ public class EvilKnight : IMonster
 
     public void ShieldBash(ICharacter target)
     {
+        if (Mana < 15)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Shield Bash!");
+            return;
+        }
+        Mana -= 15; 
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {

@@ -5,7 +5,10 @@ public class Leveling
     public static void LevelUp(ICharacter character)
     {
         character.level++;
-        character.Health += 10;
+        character.MaxHealth += 10;
+        character.Health = character.MaxHealth;
+        character.MaxMana += 5;
+        character.Mana = character.MaxMana;
         character.Strength += 2;
         character.Defense += 2;
         character.Speed += 1;

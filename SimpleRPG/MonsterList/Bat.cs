@@ -7,6 +7,7 @@ namespace MonsterList
     {
         public string Name { get; set; }
         public int Health { get; set; }
+        public int Mana { get; set; }
         public int Strength { get; set; }
         public int Defense { get; set; }
         public int Speed { get; set; }
@@ -16,6 +17,7 @@ namespace MonsterList
         {
             Name = "Bat";
             Health = 30;
+            Mana = 20;
             Strength = 10;
             Defense = 5;
             Speed = 25;
@@ -43,6 +45,13 @@ namespace MonsterList
 
         public void SonicScreech(ICharacter target)
         {
+            if (Mana < 5)
+            {
+                Console.WriteLine($"{Name} does not have enough Mana to use Sonic Screech!");
+                Attack(target);
+                return;
+            }
+            Mana -= 5;
             Random rand = new Random();
             if (rand.Next(0, 100) < target.Luck)
             {

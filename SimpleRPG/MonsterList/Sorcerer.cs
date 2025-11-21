@@ -7,6 +7,7 @@ public class Sorcerer : IMonster
 {
     public string Name { get; set; }
     public int Health { get; set; }
+    public int Mana { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -16,6 +17,7 @@ public class Sorcerer : IMonster
     {
         Name = "Sorcerer";
         Health = 140;
+        Mana = 100;
         Strength = 30;
         Defense = 8;
         Speed = 15;
@@ -43,6 +45,13 @@ public class Sorcerer : IMonster
 
     public void Fireball(ICharacter target)
     {
+        if (Mana < 30)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Fireball!");
+            Attack(target);
+            return;
+        }
+        Mana -= 30;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {
@@ -59,6 +68,13 @@ public class Sorcerer : IMonster
 
     public void IceSpike(ICharacter target)
     {
+        if (Mana < 20)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Ice Spike!");
+            Attack(target);
+            return;
+        }
+        Mana -= 20;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {
@@ -75,6 +91,13 @@ public class Sorcerer : IMonster
 
     public void LightningBolt(ICharacter target)
     {
+        if (Mana < 25)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Lightning Bolt!");
+            Attack(target);
+            return;
+        }
+        Mana -= 25;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {
@@ -88,6 +111,8 @@ public class Sorcerer : IMonster
 
         Console.WriteLine($"{Name} casts Lightning Bolt on {target.Name} for {damage} damage. {target.Name} has {target.Health} health left.");
     }
+
+    
 
     public void TakeTurn(object target)
     {

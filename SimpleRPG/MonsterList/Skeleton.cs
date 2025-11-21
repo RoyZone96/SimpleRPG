@@ -7,6 +7,7 @@ public class Skeleton : IMonster
 {
     public string Name { get; set; }
     public int Health { get; set; }
+    public int Mana { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -16,6 +17,7 @@ public class Skeleton : IMonster
     {
         Name = "Skeleton";
         Health = 40;
+        Mana = 30;
         Strength = 12;
         Defense = 8;
         Speed = 15;
@@ -43,6 +45,13 @@ public class Skeleton : IMonster
 
     public void BoneThrow(ICharacter target)
     {
+        if (Mana < 10)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Bone Throw!");
+            Attack(target);
+            return;
+        }
+        Mana -= 10;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {

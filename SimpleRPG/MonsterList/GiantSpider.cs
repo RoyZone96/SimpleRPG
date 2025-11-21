@@ -7,6 +7,7 @@ public class GiantSpider : IMonster
 {
     public string Name { get; set; }
     public int Health { get; set; }
+    public int Mana { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -16,6 +17,7 @@ public class GiantSpider : IMonster
     {
         Name = "Giant Spider";
         Health = 80;
+        Mana = 40;
         Strength = 20;
         Defense = 15;
         Speed = 15;
@@ -43,6 +45,13 @@ public class GiantSpider : IMonster
 
     public void WebShot(ICharacter target)
     {
+        if (Mana < 20)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Web Shot!");
+            Attack(target);
+            return;
+        }
+        Mana -= 20;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {

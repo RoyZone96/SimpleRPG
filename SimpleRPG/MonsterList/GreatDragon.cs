@@ -7,6 +7,7 @@ public class GreatDragon : IMonster
 {
     public string Name { get; set; }
     public int Health { get; set; }
+    public int Mana { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -16,6 +17,7 @@ public class GreatDragon : IMonster
     {
         Name = "Great Dragon";
         Health = 300;
+        Mana = 150;
         Strength = 50;
         Defense = 30;
         Speed = 20;
@@ -43,6 +45,13 @@ public class GreatDragon : IMonster
 
     public void FireBreath(ICharacter target)
     {
+        if (Mana < 80)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Fire Breath!");
+            Attack(target);
+            return;
+        }
+        Mana -= 80;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {
@@ -59,6 +68,13 @@ public class GreatDragon : IMonster
 
     public void TailSwipe(ICharacter target)
     {
+        if (Mana < 40)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Tail Swipe!");
+            Attack(target);
+            return;
+        }
+        Mana -= 40;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {

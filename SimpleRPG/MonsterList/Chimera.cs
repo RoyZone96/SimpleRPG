@@ -6,6 +6,7 @@ public class Chimera : IMonster
 {
     public string Name { get; set; }
     public int Health { get; set; }
+    public int Mana { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -15,6 +16,7 @@ public class Chimera : IMonster
     {
         Name = "Chimera";
         Health = 120;
+        Mana = 80;
         Strength = 25;
         Defense = 15;
         Speed = 20;
@@ -41,8 +43,15 @@ public class Chimera : IMonster
     }
 
     public void FireBreath(ICharacter target)
-    {
-        Random rand = new Random();
+    { 
+        if (Mana < 20)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Fire Breath!");
+            Attack(target);
+            return;
+        }
+        Mana -= 20;
+       Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {
             Console.WriteLine($"{target.Name} evaded the Fire Breath!");
@@ -58,6 +67,14 @@ public class Chimera : IMonster
 
     public void TailSwipe(ICharacter target)
     {
+        
+        if (Mana < 15)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Tail Swipe!");
+            Attack(target);
+            return;
+        }
+        Mana -= 15;
         Random rand = new Random();
         if (rand.Next(0, 100) < target.Luck)
         {
