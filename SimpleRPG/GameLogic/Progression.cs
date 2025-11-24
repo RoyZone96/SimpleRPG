@@ -10,6 +10,7 @@ public class Progression
         () => new Bat(),
         () => new Goblin(),
         () => new Skeleton(),
+        () => new Bandit(),
         () => new GiantSpider(),
         () => new Sorcerer(),
         () => new MetalGolem(),
