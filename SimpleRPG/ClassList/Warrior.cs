@@ -11,6 +11,7 @@ namespace ClassList
         public int Health { get; set; }
         public int MaxMana { get; set; }
         public int Mana { get; set; }
+        public string CurrentStatus { get; set; }
         public int Strength { get; set; }
         public int Defense { get; set; }
         public int Speed { get; set; }
@@ -24,6 +25,7 @@ namespace ClassList
             Health = MaxHealth;
             MaxMana = 50;
             Mana = MaxMana;
+            CurrentStatus = "Normal";
             Strength = 30;
             Defense = 20;
             Speed = 15;

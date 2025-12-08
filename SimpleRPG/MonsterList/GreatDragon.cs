@@ -1,4 +1,5 @@
 using System;
+using GameLogic;
 using ClassList; // <-- Add this line to access ICharacter
 
 namespace MonsterList;
@@ -18,10 +19,10 @@ public class GreatDragon : IMonster
         Name = "Great Dragon";
         Health = 300;
         Mana = 150;
-        Strength = 50;
-        Defense = 30;
-        Speed = 20;
-        Luck = 15;
+        Strength = 80;
+        Defense = 70;
+        Speed = 30;
+        Luck = 5;
     }
 
     public void Attack(object target)
@@ -64,6 +65,13 @@ public class GreatDragon : IMonster
         target.Health -= damage;
 
         Console.WriteLine($"{Name} uses Fire Breath on {target.Name} for {damage} damage. {target.Name} has {target.Health} health left.");
+
+        Random burnRand = new Random();
+        if (burnRand.Next(0, 100) < 50) 
+        {
+            StatusEffects.ApplyBurn(target);
+            Console.WriteLine($"{target.Name} is burned by the Fire Breath!");
+        }
     }
 
     public void TailSwipe(ICharacter target)

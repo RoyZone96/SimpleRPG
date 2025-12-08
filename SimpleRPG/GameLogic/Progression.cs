@@ -30,9 +30,10 @@ public class Progression
 
     public static IMonster GetNextMonster(ICharacter character)
     {
-        if (!HasMoreMonsters(character.level))
+        int nextLevel = character.level;
+        if (!HasMoreMonsters(nextLevel))
             return null; // No more monsters, adventure complete
-        return GetMonsterByLevel(character.level);
+        return GetMonsterByLevel(nextLevel);
     }
 
     public static bool IsFinalMonster(IMonster monster)
@@ -42,7 +43,7 @@ public class Progression
 
     public static bool HasMoreMonsters(int level)
     {
-        return level < MonsterOrder.Count;
+        return level <= MonsterOrder.Count;
     }
 
     public static IMonster GetFinalMonster()

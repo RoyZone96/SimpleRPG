@@ -1,5 +1,6 @@
 using System;
 using ClassList; // <-- Add this line to access ICharacter
+using GameLogic;
 
 namespace MonsterList;
 
@@ -18,10 +19,10 @@ public class GiantSpider : IMonster
         Name = "Giant Spider";
         Health = 80;
         Mana = 40;
-        Strength = 20;
-        Defense = 15;
-        Speed = 15;
-        Luck = 5;
+        Strength = 30;
+        Defense = 25;
+        Speed = 35;
+        Luck = 7;
     }
 
     public void Attack(object target)
@@ -64,7 +65,42 @@ public class GiantSpider : IMonster
         target.Health -= damage;
 
         Console.WriteLine($"{Name} uses Web Shot on {target.Name} for {damage} damage. {target.Name} has {target.Health} health left.");
+        Random stunnRand = new Random();
+        if (stunnRand.Next(0, 100) < 30)
+        {
+            StatusEffects.ApplyStun(target);
+            Console.WriteLine($"{target.Name} is stunned by the Web Shot!");
+        }
     }
+
+    public void PoisonBite(ICharacter target)
+    {
+        if (Mana < 15)
+        {
+            Console.WriteLine($"{Name} does not have enough Mana to use Poison Bite!");
+            Attack(target);
+            return;
+        }
+        Mana -= 15;
+        Random rand = new Random();
+        if (rand.Next(0, 100) < target.Luck)
+        {
+            Console.WriteLine($"{target.Name} evaded the Poison Bite!");
+            return;
+        }
+
+        int damage = (int)(Strength * 1.2) - target.Defense;
+        damage = damage < 0 ? 0 : damage;
+        target.Health -= damage;
+
+        Console.WriteLine($"{Name} uses Poison Bite on {target.Name} for {damage} damage. {target.Name} has {target.Health} health left.");
+        Random poisonRand = new Random();
+        if (poisonRand.Next(0, 100) < 50)
+        {
+            StatusEffects.ApplyPoison(target);
+            Console.WriteLine($"{target.Name} is poisoned by the Poison Bite!");
+        }
+   }
 
     public void TakeTurn(object target)
     {

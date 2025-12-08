@@ -1,6 +1,8 @@
 using System;
 using ClassList; // <-- Add this line to access ICharacter
+using GameLogic;
 namespace MonsterList;
+
 
 public class Chimera : IMonster
 {
@@ -17,8 +19,8 @@ public class Chimera : IMonster
         Name = "Chimera";
         Health = 120;
         Mana = 80;
-        Strength = 25;
-        Defense = 15;
+        Strength = 59;
+        Defense = 45;
         Speed = 20;
         Luck = 10;
     }
@@ -63,6 +65,13 @@ public class Chimera : IMonster
         target.Health -= damage;
 
         Console.WriteLine($"{Name} uses Fire Breath on {target.Name} for {damage} damage. {target.Name} has {target.Health} health left.");
+    
+        Random burnRand = new Random();
+        if (burnRand.Next(0, 100) < 40) 
+        {
+            StatusEffects.ApplyBurn(target);
+            Console.WriteLine($"{target.Name} is burned by the Fire Breath!");
+        }           
     }
 
     public void TailSwipe(ICharacter target)

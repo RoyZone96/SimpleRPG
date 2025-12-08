@@ -16,11 +16,12 @@ namespace MonsterList
         public Goblin()
         {
             Name = "Goblin";
-            Health = 50;
-            Strength = 15;
-            Defense = 10;
-            Speed = 10;
-            Luck = 5;
+            Health = 90;
+            Mana = 30;
+            Strength = 25;
+            Defense = 14;
+            Speed = 14;
+            Luck = 10;
         }
 
         public void Attack(object target)
@@ -58,7 +59,7 @@ namespace MonsterList
                 return;
             }
 
-            int damage = (int)(Strength * 1.5) - target.Defense;
+            int damage = (int)(Strength * 1.8) - target.Defense;
             damage = damage < 0 ? 0 : damage;
             target.Health -= damage;
 

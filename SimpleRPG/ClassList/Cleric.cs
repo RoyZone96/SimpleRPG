@@ -12,6 +12,8 @@ public class Cleric : ICharacter
     public int MaxHealth { get; set; }
     public int Mana { get; set; }
     public int MaxMana { get; set; }
+
+    public string CurrentStatus { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -30,6 +32,7 @@ public class Cleric : ICharacter
         Defense = 25;
         Speed = 15;
         Luck = 15;
+        CurrentStatus = "Normal";
     }
 
     public void Attack(IMonster target)

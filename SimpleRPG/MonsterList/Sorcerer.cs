@@ -21,7 +21,7 @@ public class Sorcerer : IMonster
         Strength = 30;
         Defense = 8;
         Speed = 15;
-        Luck = 12;
+        Luck = 22;
     }
 
     public void Attack(object target)

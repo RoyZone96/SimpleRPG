@@ -1,6 +1,7 @@
+using GameLogic;
+using System;
 using ClassList; // <-- Add this line to access ICharacter
-using ClassList; // <-- Add this line to access ICharacter
-
+    
 
 namespace MonsterList;
 
@@ -19,8 +20,8 @@ public class EvilKnight : IMonster
         Name = "Evil Knight";
         Health = 100;
         Mana = 75;
-        Strength = 20;
-        Defense = 15;
+        Strength = 50;
+        Defense = 55;
         Speed = 10;
         Luck = 5;
     }
@@ -64,6 +65,13 @@ public class EvilKnight : IMonster
         target.Health -= damage;
 
         Console.WriteLine($"{Name} uses Dark Slash on {target.Name} for {damage} damage. {target.Name} has {target.Health} health left.");
+    
+        Random curseRand = new Random();
+        if (curseRand.Next(0, 100) < 75) 
+        {
+            StatusEffects.ApplyCursed(target);
+            Console.WriteLine($"{target.Name} is cursed by the Dark Slash!");
+        }
     }
 
     public void ShieldBash(ICharacter target)

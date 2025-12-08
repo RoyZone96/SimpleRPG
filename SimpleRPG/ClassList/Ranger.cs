@@ -11,6 +11,7 @@ public class Ranger : ICharacter
     public int Health { get; set; }
     public int Mana { get; set; }
     public int MaxMana { get; set; }
+    public string CurrentStatus { get; set; }
     public int Strength { get; set; }
     public int Defense { get; set; }
     public int Speed { get; set; }
@@ -24,6 +25,7 @@ public class Ranger : ICharacter
         Health = MaxHealth;
         MaxMana = 80;
         Mana = MaxMana;
+        CurrentStatus = "Normal";
         Strength = 25;
         Defense = 15;
         Speed = 20;

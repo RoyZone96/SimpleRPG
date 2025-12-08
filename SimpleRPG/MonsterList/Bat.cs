@@ -1,5 +1,6 @@
 using System;
 using ClassList;
+using GameLogic;
 
 namespace MonsterList
 {
@@ -16,12 +17,12 @@ namespace MonsterList
         public Bat()
         {
             Name = "Bat";
-            Health = 30;
-            Mana = 20;
-            Strength = 10;
-            Defense = 5;
-            Speed = 25;
-            Luck = 10;
+            Health = 60;
+            Mana = 40;
+            Strength = 18;
+            Defense = 10;
+            Speed = 20;
+            Luck = 14;
         }
 
         public void Attack(object target)
@@ -62,6 +63,12 @@ namespace MonsterList
             int damage = (int)(Strength * 1.2) - target.Defense;
             damage = damage < 0 ? 0 : damage;
             target.Health -= damage;
+            Random stunRand = new Random();
+            if (stunRand.Next(0, 100) < 40)
+            {
+                StatusEffects.ApplyStun(target);
+                Console.WriteLine($"{target.Name} is stunned by the Sonic Screech!");
+            }
 
             Console.WriteLine($"{Name} uses Sonic Screech on {target.Name} for {damage} damage. {target.Name} has {target.Health} health left.");
         }

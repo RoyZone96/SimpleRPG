@@ -1,5 +1,6 @@
 using System;
 using ClassList;
+using GameLogic;
 namespace MonsterList
 {
     public class Bandit : IMonster
@@ -17,10 +18,10 @@ namespace MonsterList
             Name = "Bandit";
             Health = 70;
             Mana = 30;
-            Strength = 20;
-            Defense = 5;
-            Speed = 50;
-            Luck = 15;
+            Strength = 30;
+            Defense = 15;
+            Speed = 70;
+            Luck = 25;
         }
 
         public void Attack(object target)
@@ -56,6 +57,33 @@ namespace MonsterList
 
             Console.WriteLine($"{Name} uses Backstab on {target.Name} for {damage} damage! {target.Name} has {target.Health} health left.");
         }
+
+        public void PoisonSlash(ICharacter target)
+        {
+            if (Mana < 15)
+            {
+                Console.WriteLine($"{Name} does not have enough Mana to use Poison Slash!");
+                Attack(target);
+                return;
+            }
+            Mana -= 15;
+            Random rand = new Random();
+            if (rand.Next(0, 100) < target.Luck)
+            {
+                Console.WriteLine($"{target.Name} evaded the Poison Slash!");
+                return;
+            }
+
+            int damage = Strength - target.Defense;
+            damage = damage < 0 ? 0 : damage;
+            target.Health -= damage;
+            StatusEffects.ApplyPoison(target);
+
+            Console.WriteLine($"{Name} uses Poison Slash on {target.Name} for {damage} damage! {target.Name} is poisoned and has {target.Health} health left.");
+        }
+
+
+
         public void TakeTurn(object target)
         {
             Attack(target);

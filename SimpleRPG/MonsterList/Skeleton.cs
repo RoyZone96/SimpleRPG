@@ -16,12 +16,12 @@ public class Skeleton : IMonster
     public Skeleton()
     {
         Name = "Skeleton";
-        Health = 40;
-        Mana = 30;
-        Strength = 12;
-        Defense = 8;
-        Speed = 15;
-        Luck = 5;
+        Health = 80;
+        Mana = 40;
+        Strength = 22;
+        Defense = 14;
+        Speed = 20;
+        Luck = 8;
     }
 
     public void Attack(object target)
@@ -59,7 +59,7 @@ public class Skeleton : IMonster
             return;
         }
 
-        int damage = (int)(Strength * 1.3) - target.Defense;
+        int damage = (int)(Strength * 1.5) - target.Defense;
         damage = damage < 0 ? 0 : damage;
         target.Health -= damage;
 

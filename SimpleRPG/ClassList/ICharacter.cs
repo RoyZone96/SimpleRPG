@@ -11,6 +11,7 @@ namespace ClassList
         int MaxHealth { get; set; }
         int Mana { get; set; }
         int MaxMana { get; set; }
+        string CurrentStatus { get; set; }
         int Strength { get; set; }
         int Defense { get; set; }
         int Speed { get; set; }

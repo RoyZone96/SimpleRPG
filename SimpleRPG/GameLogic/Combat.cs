@@ -11,7 +11,19 @@ public class Combat
         if (character.Speed >= monster.Speed)
         {
 
-            CombatMenu.ShowCombatMenu(character, monster);
+            // Process status effects and determine if character can act
+            bool canAct = StatusEffects.ProcessStatusEffects(character);
+            if (character.Health <= 0)
+            {
+                if (!TryAutoRevive(character))
+                    return; // character died from status effects and couldn't revive
+            }
+
+            if (canAct)
+            {
+                CombatMenu.ShowCombatMenu(character, monster);
+            }
+
             if (monster.Health > 0)
             {
                 monster.TakeTurn(character);
@@ -22,7 +34,17 @@ public class Combat
             monster.TakeTurn(character);
             if (character.Health > 0)
             {
-                CombatMenu.ShowCombatMenu(character, monster);
+                bool canAct = StatusEffects.ProcessStatusEffects(character);
+                if (character.Health <= 0)
+                {
+                    if (!TryAutoRevive(character))
+                        return;
+                }
+
+                if (canAct)
+                {
+                    CombatMenu.ShowCombatMenu(character, monster);
+                }
             }
         }
     }
@@ -44,7 +66,7 @@ public class Combat
 
     public static void DisplayStatus(ICharacter character, IMonster monster)
     {
-        Console.WriteLine($"{character.Name} - Health: {character.Health}, Level: {character.level}");
+        Console.WriteLine($"{character.Name} - Health: {character.Health}, - Mana: {character.Mana} Level: {character.level}");
         Console.WriteLine($"{monster.Name} - Health: {monster.Health}");
     }
 
@@ -72,7 +94,8 @@ public class Combat
         }
     }
 
-    public static bool TryAutoRevive(ICharacter character){
+    public static bool TryAutoRevive(ICharacter character)
+    {
         if (character.Health <= 0)
         {
             if (character.Mana >= 20)
